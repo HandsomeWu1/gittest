@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./package/bootstrap.min.css">
+    <link rel="stylesheet" href="./package/bootstrap.min.js">
+    <link rel="stylesheet" href="./package/mycss.css">
+    <link rel="stylesheet" href="./package/testcss.css">
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=a8e3f1d526511281bac2edf977a6ca03"></script>
+    <script src="./package/jquery3.5.1.js"></script>
+    <script src="./package/kangsheng.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid change " align="center">
+        <img src="./image/logo.jpg" alt="" align="left">
+    </div>
+    <div class="div">
+        <div class="box">
+            <div class="box1 current">首页</div>
+            <div class="box1">走近康盛</div>
+            <div class="box1">产业介绍</div>
+            <div class="box1">新闻中心</div>
+            <div class="box1">人力资源</div>
+            <div class="box1">产品中心</div>
+            <div class="box1">联系我们</div>
+        </div>
+        <!-- 首页部分代码 -->
+        <div class="navchecked interval" id="nav">
+            <!-- 线 -->
+            <div class="horizon"></div>
+            <div class="photo">
+                <li><img src="./RotationChart/Index.png" alt="" class="img-fluid testimg"></li>
+                <li><img src="./RotationChart/ApproachToKangSheng.png" alt="" class="img-fluid"></li>
+                <li><img src="./RotationChart/ProductCenter.png" alt="" class="img-fluid"></li>
+                <li><img src="./RotationChart/ProductIntroduce.png" alt="" class="img-fluid"></li>
+                <li><img src="./RotationChart/HumanResources.png" alt="" class="img-fluid"></li>
+                <li><img src="./RotationChart/ContactUs.png" alt="" class="img-fluid"></li>
+                <li><img src="./RotationChart/NewsIntroduce.png" alt="" class="img-fluid"></li>
+            </div>
+            <!-- 图片部分 -->
+            <div>
+                <img class="img-fluid" src="./image/stone.jpg" alt="">
+            </div>
+            <!-- 关于我们部分 -->
+            <div class="mybackground1">
+                <div class="text-center myfont" style="margin-top: 10px;">关于我们</div>
+                <div class="MyFontSize">
+                    江苏康盛农业发展有限公司成立于2011年4月7日，占地面积约200亩，注册资本2000万元人民币，总投资3亿元。项目建设分三期进行，总生产规模达到日产70吨产能，康盛农业所在地铜山区是江苏省和徐州市重要的食用菌生产大区，随着农业产业结构的不断调整，食用菌生产得到迅速发展，特别是10年铜山区……
+                    <div align="right" id="ReadMore">查看更多>></div>
+                </div>
+            </div>
+            <!-- 产品中心部分 -->
+            <div class="mybackground2" style="margin-top: -5px;">
+                <div class="text-center myfont"><br> 产品中心</div>
+                <div>
+                    <img class="format pic4" src="./image/mushroom1.jpg" alt="">
+                    <div class="format pos WhiteFlowerMushroomAndEnokiMushroom">白玉菇</div>
+                </div>
+                <div>
+                    <img class="format pic5" src="./image/mushroom2.jpg" alt="">
+                    <div class="format pos HypsizygusMarmoreus">蟹味菇</div>
+                </div>
+                <div>
+                    <img class="format pic6" src="./image/mushroom3.jpg" alt="">
+                    <div class="format pos WhiteFlowerMushroomAndEnokiMushroom">金针菇</div>
+                </div>
+            </div>
+            <!-- 线 -->
+            <div class="horizon"></div>
+            <div align='center' class="rights FirstRight text-center">
+                版权所有©2020：江苏康盛农业发展有限公司 备案:苏ICP备12063130号
+            </div>
+            <div align='center' class="rights SecondRight">
+                地址:江苏首徐州市铜山区新区街道办事处徐村电话:0516-85138666邮箱: zgjsksny@163.com
+            </div>
+        </div>
+        <script>
+            var ul = document.querySelector('ul');
+            var info = document.querySelector('.information');
+            var caeer = document.querySelector('.caeer');
+            var photo = document.querySelector('.photo');
+            var ol = document.querySelector('ol');
+            var lunbo = photo.querySelector('ul');
+
+            function animate(obj, target, callback) {
+                // console.log(callback);  callback = function() {}  调用的时候 callback()
+                // 先清除以前的定时器，只保留当前的一个定时器执行
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function() {
+                    // 步长值写到定时器的里面
+                    // 把我们步长值改为整数 不要出现小数的问题
+                    // var step = Math.ceil((target - obj.offsetLeft) / 10);
+                    var step = (target - obj.offsetLeft) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    if (obj.offsetLeft == target) {
+                        // 停止动画 本质是停止定时器
+                        clearInterval(obj.timer);
+                        // 回调函数写到定时器结束里面
+                        // if (callback) {
+                        //     // 调用函数
+                        //     callback();
+                        // }
+                        callback && callback();
+                    }
+                    console.log(obj.offsetLeft);
+                    console.log(step);
+                    // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                    console.log(obj.style.left);
+
+                }, 15);
+            }
+            ul.children[0].onclick = function() {
+                for (var j = 0; j < 3; j++) {
+                    ul.children[j].className = "";
+                }
+                console.log(123);
+                this.className = "navchecked"
+                caeer.style.display = "none";
+                photo.style.display = "none";
+                info.style.display = "block";
+
+            }
+            ul.children[1].onclick = function() {
+                for (var j = 0; j < 3; j++) {
+                    ul.children[j].className = "";
+                }
+                this.className = "navchecked"
+                info.style.display = "none";
+                photo.style.display = "none";
+                caeer.style.display = "block";
+            }
+            ul.children[2].onclick = function() {
+                for (var j = 0; j < 3; j++) {
+                    ul.children[j].className = "";
+                }
+                this.className = "navchecked"
+                caeer.style.display = "none";
+                info.style.display = "none";
+                photo.style.display = "block";
+            }
+            for (var i = 0; i < lunbo.children.length; i++) {
+                // 创建一个小li 
+                var li = document.createElement('li');
+                // 记录当前小圆圈的索引号 通过自定义属性来做 
+                li.setAttribute('index', i);
+                // 把小li插入到ol 里面
+                ol.appendChild(li);
+                if (i == 0) {
+                    li.className = 'current';
+                }
+                // 4. 小圆圈的排他思想 我们可以直接在生成小圆圈的同时直接绑定点击事件
+                li.addEventListener('click', function() {
+                    // 干掉所有人 把所有的小li 清除 current 类名
+                    for (var i = 0; i < ol.children.length; i++) {
+                        ol.children[i].className = '';
+                    }
+                    // 留下我自己  当前的小li 设置current 类名
+                    this.className = 'current';
+                    // 5. 点击小圆圈，移动图片 当然移动的是 ul 
+                    // ul 的移动距离 小圆圈的索引号 乘以 图片的宽度 注意是负值
+                    // 当我们点击了某个小li 就拿到当前小li 的索引号
+                    var index = this.getAttribute('index');
+                    // 当我们点击了某个小li 就要把这个li 的索引号给 num  
+                    num = index;
+                    // 当我们点击了某个小li 就要把这个li 的索引号给 circle  
+                    circle = index;
+                    // num = circle = index;
+                    // console.log(focusWidth);
+                    // console.log(index);
+                    animate(lunbo, -index * 500);
+                })
+            }
+        </script>
+</body>
+
+</html>

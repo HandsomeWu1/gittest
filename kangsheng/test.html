@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title></title>
+
+</head>
+
+<body>
+
+</body>
+
+<script type="text/javascript">
+    //首先设置行，列
+
+    var cols = 6; //６列
+
+    var rows = 6; //６行
+
+    var htmlstr = "<table border='1px'>";
+
+    for (i = 1; i <= rows; i++) {
+
+        htmlstr += "<tr>";
+
+        for (j = 1; j <= cols; j++) {
+
+            htmlstr += "<td >" + i + "行" + j + "列" + "</td>";
+
+        }
+
+        htmlstr += "</tr>";
+
+    }
+
+    htmlstr += "</table>";
+
+    document.write(htmlstr);
+</script>
+
+</html>
